@@ -1,6 +1,6 @@
 [package]
-name = "intro-to-rust"
-version = "0.1.0"
+name = "part2"
+version = "1.0.0"
 authors = ["Richard Feldman <oss@rtfeldman.com>"]
 edition = "2018"
 
