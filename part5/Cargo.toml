@@ -1,8 +1,0 @@
-[package]
-name = "part2"
-version = "1.0.0"
-authors = ["Richard Feldman <oss@rtfeldman.com>"]
-edition = "2018"
-
-[dependencies]
-text_io = "0.1.8"
