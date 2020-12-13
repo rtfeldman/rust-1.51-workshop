@@ -17,15 +17,18 @@ fn print_population(adults: u64, kids: u32, buildings: u32) {
     // 💡 TIP: To get a f64 answer here, both numerator and denominator must be f64 values
     let buildings_per_person = 0.0;
 
+    // The println! macro prints text to the console.
+    // We'll learn more about it later!
     println!("    Population: {}", population);
     println!("        Adults: {}", adults);
     println!("        Kids: {}", kids);
     println!("    Buildings: {}", buildings);
-    println!("    Buildings per person: [👉 TODO print buildings_per_person here]\n");
+    println!("    Buildings per person: {}\n", buildings_per_person);
 
-    if buildings_per_person >= 1.0 {
-        println!("Everyone can have their own building!");
-    } else {
+    // 👉 TODO instead of `if true`, check if buildings_per_person is less than 1
+    if true {
         println!("Buildings must be shared!");
+    } else {
+        println!("Everyone can have their own building!");
     }
 }
