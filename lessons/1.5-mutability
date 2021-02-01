@@ -1,0 +1,23 @@
+# Mutability
+
+## `let` and initialization
+
+You can declare a `let` value without initializing it, but it must be
+initialized before it's used.
+
+[ example, including intialization inside all `if` and `else if` branches ]
+
+However, you do have to initialize it before it gets used.
+
+Once a `let` value has been initialized, it cannot be reassigned to a different
+value. For that, you need `let mut`.
+
+## `let mut`
+
+
+## Shadowing vs. mutating
+
+## `mut` parameters
+
+NOTE: you can in fact use `let` to shadow a parameter instead of mutating it
+- show how this is different
