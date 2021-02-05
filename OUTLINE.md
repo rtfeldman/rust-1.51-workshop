@@ -21,7 +21,7 @@
 * enums
 * pattern matching
 
-## 3. Arrays and Vectors
+## 3. Arrays
 
 * arrays
 * methods
@@ -34,25 +34,23 @@
 * Ownership
 * Moving
 
-## 5. Borrowing and slices
+## 5. Borrowing and Lifetimes
 
-* Borrowing
-* Array slices
-* String slices
-* Scopes [talk about blocks and how reassignment with `let` triggers dropping]
-
-## 6. Lifetimes
-
-* Option and Result (maybe motivate Option and Result with String.head or something? Something that returns an Option or Result)
+* Borrowing [get into scopes - talk about blocks and how reassignment with `let` triggers dropping]
+* Slices [array *and* string]
 * Lifetimes
-* Lifetime Annotations
 * Static lifetimes
 
-## 7. Traits
+## 6. Traits
 * Display and Debug
-* From and Into [ introduce the Self type here]
-* Clone and Copy
-* iterators
+* From and Into [introduce the Self type here?]
+* Clone and Copy [introduce the Self type here?]
+* Iterators [into_iter vs iter vs iter_mut]
+
+## 7. Closures
+* Option and Result
+* First-class functions
+* Closures
 
 ## 8. Modules, Crates, and Cargo
 * modules
