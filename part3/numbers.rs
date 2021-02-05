@@ -11,9 +11,9 @@ pub fn main() {
     //           (Experiment to see when it's needed!)
     //
     // Option 2: Change some of the functions to return a tuple
-    //           of (i64, Vec<i64>), with the Vec<i64> being the
-    //           `numbers` argument that was passed in. With this
-    //           approach, you won't need to call .clone() at all!
+    //           of (i64, Vec<i64>), using the `numbers` argument
+    //           as the Vec<i64> to return. With this approach,
+    //           you won't need to call .clone() at all!
 }
 
 fn sum(numbers: Vec<i64>) -> i64 {
