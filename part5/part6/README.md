@@ -1,6 +1,6 @@
-# Part 4
+# Part 5
 
-To build everything, `cd` into the `part3/` directory and run:
+To build everything, `cd` into the `part5/` directory and run:
 
 ```shell
 rustc numbers.rs
