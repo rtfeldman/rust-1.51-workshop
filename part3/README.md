@@ -1,18 +1,18 @@
-# Part 1
+# Part 3
 
-To build everything, `cd` into the `part1/` directory and run:
+To build everything, `cd` into the `part3/` directory and run:
 
 ```shell
-rustc city.rs
+rustc numbers.rs
 ```
 
-This will compile your `city.rs` file into `city` (or `city.exe` on Windows).
+This will compile your `numbers.rs` file into `numbers` (or `numbers.exe` on Windows).
 
-Then you can run it with `./city` (or `city.exe` on Windows).
+Then you can run it with `./numbers` (or `numbers.exe` on Windows).
 
 ## Exercise
 
-Open `city.rs` in your editor and resolve the TODOs there.
+Open `numbers.rs` in your editor and resolve the TODOs there.
 
-After you complete each one, re-run `rustc city.rs` to
-recompile the `city` executable, then re-run the executable to see the output!
+After you complete each one, re-run `rustc numbers.rs` to
+recompile the `numbers` executable, then re-run the executable to see the output!
