@@ -1,11 +1,11 @@
 pub fn main() {
     let numbers = vec![2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24];
 
-    println!("Sum of these numbers: {}", sum(numbers));
-    println!("Product of these numbers: 👉 TODO call product() and put answer here");
-    println!("Average of these numbers: 👉 TODO call average() and put answer here");
+    let sum_of_nums = sum(numbers);
+    let product_of_nums = 0; // 👉 TODO call product() and put answer here
+    let average_of_nums = 0; // 👉 TODO call average() and put answer here
 
-    // 💡 TIP: You can do this in one of two ways. Try 'em both!
+    // 💡 TIP: You'll get a compile error. Here are two ways you can fix it:
     //
     // Option 1: Pass numbers.clone() some of the time.
     //           (Experiment to see when it's needed!)
@@ -14,6 +14,12 @@ pub fn main() {
     //           of (i64, Vec<i64>), using the `numbers` argument
     //           as the Vec<i64> to return. With this approach,
     //           you won't need to call .clone() at all!
+    //
+    // Give both options a try!
+
+    println!("Sum of these numbers: {}", sum_of_nums);
+    println!("Product of these numbers: {}", product_of_nums);
+    println!("Average of these numbers: {}", average_of_nums);
 }
 
 fn sum(numbers: Vec<i64>) -> i64 {
