@@ -16,45 +16,46 @@
 
 ## 2. Collections
 
-* structs [ intro to memory as a concept ]
 * tuples
+* structs
 * enums
-* methods (`impl`)
+* pattern matching
 
-## 3. Parameterized Types
+## 3. Arrays and Vectors
 
-* arrays [ compare to structs - both are fixed-layout! ]
-* Vec [ intro to dynamic-layout memory as a concept, contrast with structs and arrays ]
-* Type variables
-(maybe motivate Option and Result with String.head or something? Something that returns an Option or Result)
+* arrays
+* methods
+* Vec
 
 ## 4. Ownership
 
 * Stack memory
 * Heap memory
 * Ownership
-* Scopes [talk about blocks and how reassignment with `let` triggers dropping]
+* Moving
 
 ## 5. Borrowing and slices
 
 * Borrowing
 * Array slices
 * String slices
+* Scopes [talk about blocks and how reassignment with `let` triggers dropping]
 
 ## 6. Lifetimes
 
+* Option and Result (maybe motivate Option and Result with String.head or something? Something that returns an Option or Result)
 * Lifetimes
 * Lifetime Annotations
 * Static lifetimes
 
 ## 7. Traits
 * Display and Debug
+* From and Into [ introduce the Self type here]
+* Clone and Copy
 * iterators
-* From and Into
-* AsRef
 
 ## 8. Modules, Crates, and Cargo
 * modules
-* crates
+* crates [turbofish, e.g. `std::mem::size_of::`]
 * cargo
 * tools [clippy, fmt, bench, unused deps...]
