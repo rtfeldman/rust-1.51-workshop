@@ -39,7 +39,6 @@
 
 * Borrowing
 * Mutable References
-* Slices
 * Lifetimes
 
 ## 6. Traits
