@@ -40,6 +40,7 @@
 * Borrowing
 * Mutable References
 * Lifetimes
+* Slices
 
 ## 6. Traits
 * Display and Debug
