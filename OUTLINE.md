@@ -38,22 +38,24 @@
 ## 5. Borrowing and Lifetimes
 
 * Borrowing
-* Slices [array *and* string]
+* Mutable References
+* Slices
 * Lifetimes
-* Static lifetimes
 
 ## 6. Traits
 * Display and Debug
-* From and Into [introduce the Self type here?]
-* Clone and Copy [introduce the Self type here?]
-* Iterators [into_iter vs iter vs iter_mut]
+* Drop
+* From and Into
+* Clone and Copy
+* Iterators
 
 ## 7. Closures
 * First-class functions
 * Closures
+* Move Closures
 
 ## 8. Modules, Crates, and Cargo
 * modules
-* crates [turbofish, e.g. `std::mem::size_of::`]
+* crates 
 * cargo
-* tools [clippy, fmt, bench, unused deps...]
+* tools 
