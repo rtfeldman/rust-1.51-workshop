@@ -26,17 +26,18 @@
 * arrays
 * methods
 * Vec
+* Type parameters
 
 ## 4. Ownership
 
 * Stack memory
 * Heap memory
+* Automatic memory management
 * Ownership
-* Moving
 
 ## 5. Borrowing and Lifetimes
 
-* Borrowing [get into scopes - talk about blocks and how reassignment with `let` triggers dropping]
+* Borrowing
 * Slices [array *and* string]
 * Lifetimes
 * Static lifetimes
@@ -48,7 +49,6 @@
 * Iterators [into_iter vs iter vs iter_mut]
 
 ## 7. Closures
-* Option and Result
 * First-class functions
 * Closures
 
