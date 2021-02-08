@@ -1,13 +1,11 @@
 # Outline
 
 ## Introduction
-
 * What is Rust?
 * Why use Rust?
 * Why not use Rust?
 
 ## 1. Primitives
-
 * strings
 * numbers
 * casting
@@ -15,47 +13,44 @@
 * mutability
 
 ## 2. Collections
-
 * tuples
 * structs
+* arrays
+
+## 3. Pattern Matching
 * enums
 * pattern matching
-
-## 3. Arrays
-
-* arrays
 * methods
-* Vec
-* Type parameters
 
-## 4. Ownership
-
+## 4. Vectors
 * Stack memory
 * Heap memory
+* Vec
+
+## 5. Ownership
 * Automatic memory management
 * Ownership
 
-## 5. Borrowing and Lifetimes
-
+## 6. Borrowing
+* References
 * Borrowing
 * Mutable References
-* Lifetimes
 * Slices
 
-## 6. Traits
+## 7. Lifetimes
+* Lifetimes
+* Lifetime Annotations
+* Lifetime Elision
+* The Static Lifetime
+
+## 8. Traits
 * Display and Debug
 * Drop
-* From and Into
 * Clone and Copy
 * Iterators
+* Closures and Fn
 
-## 7. Closures
-* First-class functions
-* Closures
-* Move Closures
-
-## 8. Modules, Crates, and Cargo
-* modules
-* crates 
+## Wrap-Up
+* Resources
 * cargo
 * tools 
