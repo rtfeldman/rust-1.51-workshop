@@ -12,7 +12,7 @@ fn print_population(adults: u64, kids: u32, buildings: u32) {
     // 💡 TIP: Use the `as` keyword to convert between numeric types!
     let population = 0;
 
-    // 👉 TODO compute buildings_per_person by dividing population by buildings
+    // 👉 TODO compute buildings_per_person by dividing buildings by population
     //
     // 💡 TIP: To get a f64 answer here, both numerator and denominator must be f64 values
     let buildings_per_person = 0.0;
