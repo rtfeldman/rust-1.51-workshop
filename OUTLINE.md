@@ -7,10 +7,9 @@
 
 ## 1. Primitives
 * strings
-* numbers
-* casting
+* floats
+* integers
 * booleans
-* mutability
 
 ## 2. Collections
 * tuples
@@ -32,8 +31,7 @@
 * Ownership
 
 ## 6. Borrowing
-* References
-* Borrowing
+* References and borrowing
 * Mutable References
 * Slices
 
@@ -44,9 +42,8 @@
 * The Static Lifetime
 
 ## 8. Traits
-* Display and Debug
-* Drop
-* Clone and Copy
+* `trait`
+* Deriving
 * Iterators
 * Closures and Fn
 
