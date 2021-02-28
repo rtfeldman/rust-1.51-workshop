@@ -1,27 +1,59 @@
-pub fn main() {
-    let city_names = vec!["Pythonia", "Javasburg", "C by the Sea", "Rustville"];
+enum CitySize {
+    Town,       // approximate residents: 1_000
+    City,       // approximate residents: 10_000
+    Metropolis, // approximate residents: 1_000_000
+}
 
-    let last_city = "👉 TODO Use .pop() to remove the last city from the list.";
-    // 💡 TIP: Here's an example of pattern matching syntax:
-    //
-    //     match some_option_value {
-    //         Some(inner_value) => { ... }
-    //         None => { ... }
-    //     }
+struct City {
+    description: String,
+    residents: u64,
+    is_coastal: bool,
+}
 
-    if last_city.starts_with("R") {
-        println!("“{}” starts with an R!", last_city);
-    } else {
-        println!("“{}” doesn't start with R", last_city);
+impl City {
+    fn new(city_size: CitySize, is_coastal: bool) -> City {
+        let (description, residents) = match city_size {
+            CitySize::Town => {
+                let residents = 1_000;
+
+                (
+                    format!("a *town* of approximately {} residents", residents),
+                    residents,
+                )
+            }
+            // 👉 TODO Handle the other CitySize variants individually,
+            //    in a similar way to how *town* is handled here
+            _ => {
+                let residents = 1_000;
+
+                (
+                    format!(
+                        "an *unknown-size city* of approximately {} residents",
+                        residents
+                    ),
+                    residents,
+                )
+            }
+        };
+
+        City {
+            description,
+            residents,
+            is_coastal,
+        }
     }
+}
 
-    // 👉 TODO now that we've done that, use `.push()` to put last_city
-    //    back in `city_names`.
+pub fn main() {
+    // 👉 TODO Use City::new() to create a Metropolis-sized city here
+    let rustville = City {
+        description: String::new(),
+        residents: 0,
+    };
 
-    println!("Here is the full list of cities:");
-    // 👉 TODO print each of the city names.
-    //
-    // 💡 TIP: Here's an example of `for` loop syntax:
-    //
-    //     for my_element in my_vec.iter() { ... }
+    println!("This city is {}", rustville.description);
+
+    if rustville.residents > 100_000 {
+        println!("Wow!");
+    }
 }

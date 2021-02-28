@@ -1,32 +1,25 @@
 pub fn main() {
     let numbers = vec![2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24];
 
-    // 👉 TODO call sum(), product(), and average() to replace the `= 0` values
-    // here, without using .clone() or changing what those functions return.
+    let sum_of_nums = sum(numbers);
+    let product_of_nums = 0; // 👉 TODO call product() and put answer here
+    let average_of_nums = 0; // 👉 TODO call average() and put answer here
+
+    // 💡 TIP: You'll get a compile error. Here are two ways you can fix it:
     //
-    // 💡 TIP: You can do this by accepting a slice type - e.g. &[i64]
-    let sum_of_nums = 0;
-    let product_of_nums = 0;
-    let average_of_nums = 0;
+    // Option 1: Pass numbers.clone() some of the time.
+    //           (Experiment to see when it's needed!)
+    //
+    // Option 2: Change some of the functions to return a tuple
+    //           of (i64, Vec<i64>), using the `numbers` argument
+    //           as the Vec<i64> to return. With this approach,
+    //           you won't need to call .clone() at all!
+    //
+    // Give both options a try!
 
     println!("Sum of these numbers: {}", sum_of_nums);
     println!("Product of these numbers: {}", product_of_nums);
     println!("Average of these numbers: {}", average_of_nums);
-
-    let other_numbers = vec![1, 2, 3, 4, 5, 6];
-    let (slice1, slice2) = first_three(numbers, other_numbers);
-
-    println!("The first three elements in `slice1` are:");
-
-    for num in slice1 {
-        println!("• {}", num);
-    }
-
-    println!("The first three elements in `slice2` are:");
-
-    for num in slice2 {
-        println!("• {}", num);
-    }
 }
 
 fn sum(numbers: Vec<i64>) -> i64 {
@@ -53,28 +46,4 @@ fn average(numbers: Vec<i64>) -> i64 {
     let length = numbers.len() as i64;
 
     sum(numbers) / length
-}
-
-fn first_three(numbers1: Vec<i64>, numbers2: Vec<i64>) -> (Vec<i64>, Vec<i64>) {
-    // 👉 TODO Return two slices, one containing the first 3 elements in
-    //    numbers1, and the other containing the first 3 elements in numbers2.
-    //
-    // 💡 TIP 1: You can get slices like this using this syntax:
-    //
-    //        &numbers[0..3]
-    //
-    // 💡 TIP 2: A slice type with a lifetime annotation looks like this:
-    //
-    //        &'a [i64]
-    //
-    // 💡 TIP 3: To introduce lifetime annotations to this function, change its
-    //    declaration to something like the following, depending on how many
-    //    different lifetimes you want to use:
-    //
-    //        fn first_three<'a>
-    //
-    //        fn first_three<'a, 'b>
-    //
-    //        fn first_three<'a, 'b, 'c>
-    (numbers1, numbers2)
 }

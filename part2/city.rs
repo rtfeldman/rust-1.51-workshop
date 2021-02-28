@@ -1,58 +1,33 @@
-enum CitySize {
-    Town,       // approximate residents: 1_000
-    City,       // approximate residents: 10_000
-    Metropolis, // approximate residents: 1_000_000
-}
-
 struct City {
     description: String,
     residents: u64,
+    // 👉 TODO add a field here for is_coastal: bool
+    //
+    // 💡 HINT: this will cause other compiler errors.
+    //    They will tell you what other changes need to happen!
 }
 
-impl City {
-    fn new(city_size: CitySize) -> City {
-        let (description, residents) = match city_size {
-            CitySize::Town => {
-                let residents = 1_000;
-
-                (
-                    format!("a *town* of approximately {} residents", residents),
-                    residents,
-                )
-            }
-            // 👉 TODO Handle the other CitySize variants individually,
-            //    in a similar way to how *town* is handled here
-            _ => {
-                let residents = 1_000;
-
-                (
-                    format!(
-                        "an *unknown-size city* of approximately {} residents",
-                        residents
-                    ),
-                    residents,
-                )
-            }
-        };
-
-        // 👉 TODO Use `description` and `residents` to populate this struct
+fn new_city(residents: u64, is_coastal: bool) -> City {
+    if is_coastal {
         City {
-            description: String::new(),
-            residents: 0,
+            description: format!("a *coastal* city of approximately {} residents", residents),
+            residents,
         }
+    } else {
+        panic!(
+            "👉 TODO return a `City` described as a *non-coastal* city of approximately {} residents"
+        );
     }
 }
 
 pub fn main() {
-    // 👉 TODO Use City::new() to create a Metropolis-sized city here
-    let rustville = City {
-        description: String::new(),
-        residents: 0,
-    };
+    let rustville: City = panic!("👉 TODO call new_city here, with whatever arguments you like!");
 
-    println!("This city is {}", rustville.description);
+    println!("This city can be described as: 👉 TODO print rustville's `description` here.");
 
-    if rustville.residents > 100_000 {
-        println!("Wow!");
+    if rustville.is_coastal {
+        println!("It is a coastal city.");
+    } else {
+        println!("It is not a coastal city.");
     }
 }
