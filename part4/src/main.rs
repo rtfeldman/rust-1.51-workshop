@@ -1,4 +1,4 @@
-pub fn main() {
+fn main() {
     let city_names = vec!["Pythonia", "Javasburg", "C by the Sea", "Rustville"];
 
     let last_city = "👉 TODO Use .pop() to remove the last city from the list.";

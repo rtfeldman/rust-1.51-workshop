@@ -1,4 +1,4 @@
-pub fn main() {
+fn main() {
     let city_name = "Rustville";
 
     println!("The city of {}:\n", city_name);

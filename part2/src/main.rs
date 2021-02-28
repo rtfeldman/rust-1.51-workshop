@@ -20,7 +20,7 @@ fn new_city(residents: u64, is_coastal: bool) -> City {
     }
 }
 
-pub fn main() {
+fn main() {
     let rustville: City = panic!("👉 TODO call new_city here, with whatever arguments you like!");
 
     println!("This city can be described as: 👉 TODO print rustville's `description` here.");

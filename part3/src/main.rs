@@ -44,7 +44,7 @@ impl City {
     }
 }
 
-pub fn main() {
+fn main() {
     // 👉 TODO Use City::new() to create a Metropolis-sized city here
     let rustville = City {
         description: String::new(),
