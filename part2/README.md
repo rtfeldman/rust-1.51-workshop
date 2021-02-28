@@ -1,18 +1,17 @@
 # Part 2
 
-To build everything, `cd` into the `part2/` directory and run:
+To build and run everything, `cd` into the `part2/` directory and run:
 
 ```shell
-rustc city.rs
+cargo run
 ```
 
-This will compile your `city.rs` file into `city` (or `city.exe` on Windows).
-
-Then you can run it with `./city` (or `city.exe` on Windows).
+This will compile your `src/main.rs` file into a binary executable, and
+then immediately run it.
 
 ## Exercise
 
-Open `city.rs` in your editor and resolve the TODOs there.
+Open `src/main.rs` in your editor and resolve the TODOs there.
 
-After you complete each one, re-run `rustc city.rs` to
-recompile the `city` executable, then re-run the executable to see the output!
+After you complete each one, re-run `cargo run` to
+recompile and re-run the program, so you can see its new output!
