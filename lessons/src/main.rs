@@ -15,6 +15,7 @@ const SRC_DIR: &str = "src";
 const SECTIONS_DIR: &str = "sections";
 const TARGET_DIR: &str = "target";
 const HTML_DIR: &str = "html-lessons";
+const BASE_TITLE: &str = "Introduction to Rust";
 
 #[derive(Debug)]
 struct Section {
@@ -49,13 +50,13 @@ fn run() -> io::Result<()> {
     // Here's the official documentation for the ? operator:
     //
     // https://doc.rust-lang.org/edition-guide/rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.html
-    let dir = env::current_dir()?.join(SRC_DIR).join(SECTIONS_DIR);
+    let sections_dir = env::current_dir()?.join(SRC_DIR).join(SECTIONS_DIR);
 
     // Gather up all the section_dirs
     let sections = {
         let mut section_dirs = Vec::new();
 
-        for section_entry in fs::read_dir(dir)? {
+        for section_entry in fs::read_dir(&sections_dir)? {
             let section_entry = section_entry?;
 
             if section_entry.file_type()?.is_dir() {
@@ -98,11 +99,18 @@ fn run() -> io::Result<()> {
         buffer
     };
 
-    let header_html = include_str!("header.html");
-    let footer_html = include_str!("footer.html");
-    let before_title_html = include_str!("before_body.html");
-    let before_body_html = include_str!("before_body.html");
-    let after_body_html = include_str!("after_body.html");
+    // e.g. `./target/html-lessons/`
+    let html_dir = env::current_dir()?.join(TARGET_DIR).join(HTML_DIR);
+
+    write_and_log(&html_dir.join("styles.css"), include_str!("styles.css"))?;
+    write_and_log(&html_dir.join("favicon.svg"), include_str!("favicon.svg"))?;
+
+    // Write the welcome page
+    {
+        let html = md_to_html(BASE_TITLE, &sections_dir.join("welcome.md"), &sidebar_html)?;
+
+        write_and_log(&html_dir.join("index.html"), &html)?;
+    }
 
     // Build the .html files
     {
@@ -110,34 +118,33 @@ fn run() -> io::Result<()> {
             for (subsection_index, subsection) in section.subsections.iter().enumerate() {
                 let dir_name = format!("{}.{}", section_index + 1, subsection_index + 1);
 
-                let html = {
-                    let title = format!("{} - Introduction to Rust", subsection.name);
-                    let mut buffer = format!(
-                        "{}{}{}{}{}\n<main>",
-                        before_title_html, title, before_body_html, header_html, sidebar_html
-                    );
+                let html = md_to_html(
+                    &format!("{} - {}", subsection.name, BASE_TITLE),
+                    &subsection.path,
+                    &sidebar_html,
+                )?;
 
-                    md_to_html(&subsection.path, &mut buffer)?;
-
-                    buffer.push_str(&format!("</main>\n{}{}", footer_html, after_body_html));
-
-                    buffer
-                };
-
-                // e.g. `./target/html-lessons/`
-                let target_dir = env::current_dir()?.join(TARGET_DIR).join(HTML_DIR);
+                // e.g. `./target/html-lessons/1.1/`
+                let target_dir = html_dir.join(&dir_name);
 
                 // e.g. `./target/html-lessons/1.1/index.html`
-                let target_file = target_dir.join(&dir_name).join("index.html");
+                let target_file = target_dir.join("index.html");
 
                 // Make sure the target directory exists, with the equivalent of `mkdir -p`
                 fs::create_dir_all(target_dir)?;
 
-                fs::write(&target_file, html)?;
-                println!("Wrote {:?}", target_file);
+                write_and_log(&target_file, &html)?;
             }
         }
     };
+
+    Ok(())
+}
+
+fn write_and_log(path: &Path, content: &str) -> io::Result<()> {
+    fs::write(path, content)?;
+
+    println!("Wrote {:?}", path);
 
     Ok(())
 }
@@ -183,7 +190,18 @@ fn populate_sections(section_dirs: &[(String, PathBuf)]) -> io::Result<Vec<Secti
     Ok(sections)
 }
 
-fn md_to_html(path: &Path, buffer: &mut String) -> io::Result<()> {
+fn md_to_html(title: &str, path: &Path, sidebar_html: &str) -> io::Result<String> {
+    let header_html = include_str!("header.html");
+    let footer_html = include_str!("footer.html");
+    let before_title_html = include_str!("before_title.html");
+    let before_body_html = include_str!("before_body.html");
+    let after_body_html = include_str!("after_body.html");
+
+    let mut buffer = format!(
+        "{}{}{}{}{}\n<main>",
+        before_title_html, title, before_body_html, header_html, sidebar_html
+    );
+
     // Read the contents of the .md file
     let md = {
         let mut buffer = String::with_capacity(10_000);
@@ -202,7 +220,9 @@ fn md_to_html(path: &Path, buffer: &mut String) -> io::Result<()> {
         Parser::new_ext(&md, options)
     };
 
-    html::push_html(buffer, parser);
+    html::push_html(&mut buffer, parser);
 
-    Ok(())
+    buffer.push_str(&format!("</main>\n{}{}", footer_html, after_body_html));
+
+    Ok(buffer)
 }
