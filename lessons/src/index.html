@@ -1,0 +1,202 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Introduction to Rust</title>
+    <meta name="description" content="A Rust workshop by Richard Feldman">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <nav id="sidebar-nav">
+      <ol class="lesson-links">
+
+
+
+
+
+<li>
+<h4>Primitives</h4>
+	<a class="subsection" href="/1.1">Strings</a>
+	<a class="subsection" href="/1.2">Floats</a>
+	<a class="subsection" href="/1.3">Integers</a>
+	<a class="subsection" href="/1.4">Booleans</a>
+</li>
+<li>
+<h4>Collections</h4>
+	<a class="subsection" href="/2.1">2.1 Tuples</a>
+	<a class="subsection" href="/2.2">2.2 Structs</a>
+	<a class="subsection" href="/2.3">2.3 Arrays</a>
+	<a class="subsection" href="/2.4">2.4 Memory</a>
+</li>
+<li>
+<h4>Pattern Matching</h4>
+	<a class="subsection" href="/3.1">3.1 Enums</a>
+	<a class="subsection" href="/3.2">3.2 Pattern Matching</a>
+	<a class="subsection" href="/3.3">3.3 Methods</a>
+	<a class="subsection" href="/3.4">3.4 Type Parameters</a>
+</li>
+<li>
+<h4>Vectors</h4>
+	<a class="subsection" href="/4.1">4.1 Stack Memory</a>
+	<a class="subsection" href="/4.2">4.2 Heap Memory</a>
+	<a class="subsection" href="/4.3">4.3 Vec</a>
+</li>
+<li>
+<h4>Ownership</h4>
+	<a class="subsection" href="/5.1">5.1 Automatic Memory Management</a>
+	<a class="subsection" href="/5.2">5.2 Ownership</a>
+</li>
+<li>
+<h4>Borrowing</h4>
+	<a class="subsection" href="/6.1">6.1 References and Borrowing</a>
+	<a class="subsection" href="/6.2">6.2 Mutable References</a>
+	<a class="subsection" href="/6.3">6.3 Slices</a>
+</li>
+<li>
+<h4>Lifetimes</h4>
+	<a class="subsection" href="/7.1">7.1 Lifetimes</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--         <div class="sidebar-entry"> -->
+<!--           <a class="sidebar-lesson-link" href="Str">Str</a> -->
+<!--           <div class="sidebar-sub-entries"> -->
+<!--             <a href="Str#Str">Str</a> -->
+<!--             <a href="Str#isEmpty">isEmpty</a> -->
+<!--             <a href="Str#append">append</a> -->
+<!--             <a href="Str#prepend">prepend</a> -->
+<!--             <a href="Str#concat">concat</a> -->
+<!--             <a href="Str#join">join</a> -->
+<!--             <a href="Str#split">split</a> -->
+<!--             <a href="Str#countGraphemes">countGraphemes</a> -->
+<!--             <a href="Str#foldGraphemes">foldGraphemes</a> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <div class="sidebar-entry"> -->
+<!--           <a class="sidebar-lesson-link" href="Bool">Bool</a> -->
+<!--           <div class="sidebar-sub-entries"> -->
+<!--             <a class="hidden" href="Bool#isEq">isEq</a></li> -->
+<!--             <a class="hidden" href="Bool#isNeq">isNeq</a></li> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <div class="sidebar-entry"> -->
+<!--           <a class="sidebar-lesson-link" href="Num">Num</a> -->
+<!--           <div class="sidebar-sub-entries"> -->
+<!--             <a class="hidden" href="Num#add">add</a></li> -->
+<!--             <a class="hidden" href="Num#sub">sub</a></li> -->
+<!--             <a class="hidden" href="Num#mul">mul</a></li> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <div class="sidebar-entry"> -->
+<!--           <a class="sidebar-lesson-link" href="List">List</a> -->
+<!--         </div> -->
+<!--         <div class="sidebar-entry"> -->
+<!--           <a class="sidebar-lesson-link" href="Set">Set</a> -->
+<!--         </div> -->
+<!--         <div class="sidebar-entry"> -->
+<!--           <a class="sidebar-lesson-link" href="Map">Map</a> -->
+<!--         </div> -->
+<!--         <div class="sidebar-entry"> -->
+<!--           <a class="sidebar-lesson-link" href="Result">Result</a> -->
+<!--         </div> -->
+      </ol>
+    </nav>
+    <header id="top-header">
+      <nav>
+        <h1>
+          <a href="/">Introduction to Rust</a>
+        </h1>
+      </nav>
+    </header>
+    <main>
+
+
+
+
+
+<h1>Strings</h1>
+<h2>Hello, World!</h2>
+<p>Here's a Rust program which prints &quot;Hello, World!&quot; to the console:</p>
+<pre><code class="language-rust">fn main() {
+    println!(&quot;Hello World!&quot;);
+}
+</code></pre>
+<p>If you put this in a file called <code>app.rs</code> and compile it by running <code>rustc app.rs</code>, it will generate a binary executable called <code>app</code> which you can then run to see the output.</p>
+<p>[ talk about macos / linux / windows binaries</p>
+<h2>Defining variables with <code>let</code></h2>
+<p>All variables in Rust are defined using <code>let</code>. This program will still print &quot;Hello, World!&quot; to the console:</p>
+<pre><code class="language-rust">fn main() {
+    let greeting = &quot;Hello&quot;;
+    let subject = &quot;World&quot;;
+
+    println!(&quot;{}, {}!&quot;, greeting, subject);
+}
+</code></pre>
+<p>This is because <code>println!</code> replaces the first <code>{}</code> with <code>greeting</code> and the second <code>{}</code> with <code>subject</code>. We can have as many or as few of these as we like.</p>
+<blockquote>
+<p>You can define a name using <code>let</code> without initializing it right away - for
+example, writing <code>let greeting;</code> and then later on <code>greeting = &quot;Hello&quot;;</code> - but
+you must initialize the value before it's used. If there's any code path where
+it could be used before it's initialized, Rust will give a compiler error.</p>
+</blockquote>
+<h2><code>format!</code></h2>
+<p><code>format!</code> works about the same way as <code>println!</code> - except instead of printing a
+line to the console, it returns the string after making any <code>{}</code> substitutions.</p>
+<pre><code class="language-rust">let formatted_greeting = format!(&quot;{}, {}!&quot;, greeting, subject);
+</code></pre>
+<h2>Crashing with <code>panic!</code></h2>
+<p>We can intentionally crash a Rust program using <code>panic!</code>.
+It supports the same <code>{}</code> interpolation syntax that <code>println!</code> does.</p>
+<pre><code class="language-rust">fn main() {
+    let crash_reason = &quot;Server wanted a nap.&quot;;
+
+    panic!(&quot;I crashed! {}&quot;, crash_reason);
+
+    println!(&quot;This will never get run.&quot;);
+}
+</code></pre>
+<p>Rust does not have <code>try</code>/<code>catch</code>, so whenever you <code>panic!</code> you can really expect the program to crash. (We'll talk about how Rust does error handling and recovery later.)</p>
+
+
+
+
+
+
+
+
+
+<hr/>
+<p class="next">Next: <a href="1.1">1.2 - Strings</a></p>
+
+
+    </main>
+    <footer>
+      <p>© Richard Feldman 2021-present. See <a href="https://github.com/rtfeldman/rust-1.51-workshop">repository</a> for license!</p>
+    </footer>
+  </body>
+</html>
