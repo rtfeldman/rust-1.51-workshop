@@ -1,44 +1,12 @@
-# Lifetime Annotations
+# Lifetimes
 
-lifetimes are all about tracking *dependencies*
+A *lifetime* is the time between when a value is allocated and when it's
+deallocated.
 
-## Slices
-
-struct VecMetadata {
-    memory_index_of_first_element: usize,
-    length: usize,
-    capacity: usize,
-}
-
-struct SliceMetadata {
-    memory_index_of_first_element: usize,
-    length: usize,
-}
-
-slices don't get allocated on the heap
-rather, they reference an existing heap
-allocation this can be a vec
-
-e.g.
+Here's an example:
 
 ```rust
-let years: Vec<i64> = vec![1980, 1985, 1990, 1995, 2000, 2005, 2010];
-let eighties: &[i64]  = &years[0..2];
-let nineties: &[i64]  = &years[2..4];
-
-println!("We have {} years in the nineties", nineties.len());
-```
-
-## References in structs
-
-```rust
-struct Releases {
-    years: &[i64],
-    eighties: &[i64],
-    nineties: &[i64],
-}
-
-fn get_pop_releases(years: &[i64]) -> Releases {
+fn jazz_releases(years: &[i64]) -> Releases {
     let eighties: &[i64] = &years[0..2];
     let nineties: &[i64] = &years[2..4];
 
@@ -49,54 +17,42 @@ fn get_pop_releases(years: &[i64]) -> Releases {
     }
 }
 
-let releases = {
-    let all_years: Vec<i64> = vec![1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015];
+fn main() {
+    let releases = {
+        let all_years: Vec<i64> = 
+            // alloc
+            vec![
+              1980, 1985, 1990, 1995, 2000, 2000
+            ];
 
-    get_pop_releases(all_years)
-};
+        jazz_releases(all_years)
+    }; // dealloc
 
-let eighties = releases.eighties; // uh oh!
-```
-
-```rust
-struct Releases<'a> {
-    years: &[i64],
-    eighties: &'a [i64],
-    nineties: &'a [i64],
-}
-
-fn get_pop_releases(years: &'a [i64]) -> Releases<'a> {
-    let eighties: &'a [i64] = &years[0..2];
-    let nineties: &'a [i64] = &years[2..4];
-
-    Releases {
-        years: recent_years,
-        eighties,
-        nineties,
+    for year in releases.eighties.iter() {
+        println!("Eighties year: {}", year);
     }
 }
-
-let releases = {
-    let all_years: Vec<i64> = vec![1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015];
-
-    get_pop_releases(all_years)
-};
-
-let eighties = releases.eighties;
 ```
 
-Lifetime annotations are often needed when *returning* references.
+Here the lifetime of `all_years` begins at the `// alloc` comment, when `vec!`
+gets called, and ends at the `// dealloc` comment, when `all_years` goes
+out of scope.
 
-## The `'static` Lifetime
+One of the rules Rust's borrow checker enforces is that you can never reference
+a value after its lifetime has ended. (If you did, it would be a use-after-free
+bug.)
 
-let name: &'static str = "Richard";
+Sometimes these borrow checker errors can come as a surprise. For example, in
+the code above, the call to `println!` references `releases.eighties`, but
+`releses.eighties` is a slice of `all_years` elements - and `all_years` has
+already been deallocated by the time the `println!` call is reached.
 
+Another way of saying this is that the *lifetime* of `releases` is tied to
+the lifetime of `all_years`. When the lifetime of `all_years` ends, the lifetime
+of `releases` also ends. In this case, that means the lifetime of `releases`
+is never valid, because `all_years` goes out of scope before `releases` even
+receives its value! That's what leads to the borrow checker error.
 
-## Lifetime Elision
-
-Lifetime annotations are not needed when there is exactly 1 reference in
-the return type and also exactly 1 reference in the arguments. In that case,
-Rust knows the only way the function could be valid is if they have the same
-lifetime, so it automatically gives them the same lifetime for you.
-
-## TODO example of 'b
+The more references a program has, the trickier it can get to follow which
+references' lifetimes depend on which others. Fortunately, Rust has a way to
+keep track of them explicitly.
