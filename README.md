@@ -15,7 +15,7 @@ Verify that you have the right version of cargo by running:
 cargo --version
 ```
 
-It should print a version number that is 1.51 or higher.
+It should print a version number of 1.51 or higher.
 
 Finally, clone this repository by running this at the terminal:
 
