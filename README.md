@@ -9,9 +9,15 @@ Getting Started
 
 3. Not required, but **highly** recommended: install [`rustfmt`](https://github.com/rust-lang/rustfmt#on-the-stable-toolchain) and configure your editor to run it on save.
 
-4. Clone this repository
+Verify that you have the right version of cargo by running:
 
-Run this at the terminal:
+```shell
+cargo --version
+```
+
+It should print a version number that is 1.51 or higher.
+
+Finally, clone this repository by running this at the terminal:
 
 ```shell
 git clone https://github.com/rtfeldman/intro-to-rust
