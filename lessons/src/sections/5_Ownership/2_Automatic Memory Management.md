@@ -1,7 +1,5 @@
 # Automatic memory management
 
-TODO GC
-
 ## Automatic `alloc`
 
 In Rust, unlike in C, calls to `alloc` and `dealloc` are done automatically by 
