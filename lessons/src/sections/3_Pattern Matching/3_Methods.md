@@ -39,31 +39,6 @@ We can also call `Color::num_colors()`, which will always return 3.
 > `impl` isn't limited to being used on enum types; it also accepts struct 
 > types, among others.
 
-## Constants
-
-That `num_colors` function would make more sense as a constant:
-
-```
-impl Color {
-    const NUM_COLORS: usize = 3;
-
-    fn is_red(color: Color) -> bool {
-        match color {
-            Color::Red => true,
-            _ => false,
-        }
-    }
-}
-```
-
-Now we can access `Color::NUM_COLORS` to get 3, without having to do a function
-call.
-
-Like the name suggests, constants are hardcoded at compile time and can never be 
-changed. All the types we've seen so far can be constants, but there are some
-we'll see in the future that aren't allowed to be constants. The compiler will
-tell you if you use one of the ones that isn't allowed.
-
 ## `self` for methods
 
 We can turn `is_red` into a *method* by changing its `color: Color` argument

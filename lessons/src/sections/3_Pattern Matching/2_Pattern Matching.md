@@ -58,38 +58,6 @@ match current_color {
 }
 ```
 
-## Additional clauses
-
-You can also include an `if` clause in a pattern:
-
-```rust
-match current_color {
-    Color::Green => {
-        println!("green");
-    }
-    Color::Custom { red, green, blue } if red > 100 => {
-        println!("custom reddish color (RGB {}, {}, {})", red, green, blue);
-    }
-    Color::Custom { red, green, blue } => {
-        println!("custom color (RGB {}, {}, {})", red, green, blue);
-    }
-}
-```
-
-As a convenience, you can give multiple patterns the same body by separating
-each pattern with a `|` operator:
-
-```rust
-match current_color {
-    Color::Green | Color::Red | Color::Yellow => {
-        println!("Not Custom");
-    }
-    Color::Custom { .. } => {
-        println!("Custom");
-    }
-};
-```
-
 ## Tuple payloads
 
 If you don't want to name the fields in a payload, you can use a tuple payload:
@@ -103,7 +71,8 @@ enum Color {
 }
 ```
 
-In that case, when pattern
+In that case, when pattern matching on them, use a similar syntx to destructure
+the tuple payload:
 
 ```rust
 match current_color {

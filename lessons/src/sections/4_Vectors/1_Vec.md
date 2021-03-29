@@ -50,10 +50,12 @@ struct VecMetadata {
 }
 ```
 
-Since a `usize` is 4 bytes on a 32-bit system and 8 bytes on a 64-bit system,
-and most machines are 64 bits, this means that a `Vec` of three `i32` values
-will take up a total of 36 bytes in memory: 24 bytes of metadata, and then
-12 bytes of actual data!
+> `usize` is equivalent to `u32` (4 bytes) on a 32-bit system, and `u64` (8
+> bytes) on a 64-bit system.
+>
+> Since most systems these days are 64 bits, this means that a `Vec` of three
+> `i32` values will take up a total of 36 bytes in memory: 24 bytes of metadata,
+> and then 12 bytes of actual data!
 
 Let's take a look at what that metadata is actually doing.
 

@@ -38,8 +38,6 @@ years[1] = 2002;
 years[2] = 2007;
 ```
 
-NOTE: compiler error if index oob
-
 However, we cannot add or remove elements; an array's length is hardcoded.
 
 ## Reading elements
@@ -53,9 +51,9 @@ let first_year = years[0];
 let second_year = years[1];
 ```
 
-Since the length of the array is fixed at compile time, reading elements from
-an array can never go out of bounds at runtime - any more than there would
-be with a tuple or struct.
+Unlike with tuples or structs, with arrays you can put variables in between the
+brackets - for example, `years[x]`. If you do this, and the variable is outside
+the bounds of the array, then the result will be a panic.
 
 ## Destructuring
 
@@ -65,6 +63,6 @@ Similarly to structs and tuples, we can take apart an array using destructuring:
 let [year1, year2, year3] = years;
 ```
 
-NOTE: arrays, every single element has to have the same type
-
-QUESTION: what happens if I do array[x] and x is oob? panic?
+Since the length of the array is fixed at compile time, destructuring elements
+from an array can never go out of bounds at runtime; the compiler would have
+given an error if that were going to be a problem.

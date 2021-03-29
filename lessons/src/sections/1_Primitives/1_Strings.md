@@ -12,8 +12,6 @@ fn main() {
 
 If you put this in a file called `app.rs` and compile it by running `rustc app.rs`, it will generate a binary executable called `app` which you can then run to see the output.
 
-[ talk about macos / linux / windows binaries
-
 ## Defining variables with `let`
 
 All variables in Rust are defined using `let`. This program will still print "Hello, World!" to the console:
