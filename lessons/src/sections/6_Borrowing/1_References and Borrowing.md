@@ -132,7 +132,7 @@ that value might try to look at it after it had been deallocated.
 
 Incidentally, Rust's compiler errors around ownership and borrowing (such as
 the "use after move" error we saw earlier) are collectively known as "the
-borrow checekr," because they surface a category of errors that are separate
+borrow checker," because they surface a category of errors that are separate
 from more common compiler errors like type errors and naming errors.
 
 ## Turning off the Borrow Checker
