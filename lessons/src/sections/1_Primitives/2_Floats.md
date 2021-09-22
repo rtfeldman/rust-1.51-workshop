@@ -122,7 +122,7 @@ you'll get a type mismatch at compile time:
 ```rust
 fn main() {
     let x: f64 = 1.1;
-    let y: f64 = 2.2;
+    let y: f32 = 2.2;
     let z = x * y;
 
     println!("x times y is {}", z); // ERROR: incompatible types!
