@@ -15,7 +15,7 @@ data that's in the original `Vec`.
 You can also get a slice of all the elements using `.as_slice()` like so:
 
 ```rust
-let i64_vec: Vec[i64] = vec![1, 2, 3];
+let i64_vec: Vec<i64> = vec![1, 2, 3];
 let i64_slice: &[i64] = i64_vec.as_slice();
 ```
 

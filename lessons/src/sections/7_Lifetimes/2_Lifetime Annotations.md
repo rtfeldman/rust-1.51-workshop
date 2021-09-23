@@ -6,7 +6,7 @@ Here's a way to expand the example from the previous section to include lifetime
 
 ```rust
 struct Releases<'a> {
-    years: &'a [i64]
+    years: &'a [i64],
     eighties: &'a [i64],
     nineties: &'a [i64],
 }
@@ -48,7 +48,7 @@ lifetime:
 
 ```rust
 struct Releases<'a> {
-    years: &'a [i64]
+    years: &'a [i64],
     eighties: &'a [i64],
     nineties: &'a [i64],
 }
@@ -58,7 +58,7 @@ We also could have said they all have different lifetimes, like so:
 
 ```rust
 struct Releases<'a, 'b, 'c> {
-    years: &'a [i64]
+    years: &'a [i64],
     eighties: &'b [i64],
     nineties: &'c [i64],
 }
