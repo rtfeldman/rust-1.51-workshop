@@ -5,7 +5,7 @@ parameter with each reference they contain. So you could not write this:
 
 ```rust
 struct Releases {
-    years: &[i64]
+    years: &[i64],
     eighties: &[i64],
     nineties: &[i64],
 }
