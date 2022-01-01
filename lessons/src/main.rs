@@ -101,6 +101,7 @@ fn run() -> io::Result<()> {
 
     // e.g. `./target/html-lessons/`
     let html_dir = env::current_dir()?.join(TARGET_DIR).join(HTML_DIR);
+    fs::create_dir_all(&html_dir)?;
 
     write_and_log(&html_dir.join("styles.css"), include_str!("styles.css"))?;
     write_and_log(&html_dir.join("favicon.svg"), include_str!("favicon.svg"))?;
