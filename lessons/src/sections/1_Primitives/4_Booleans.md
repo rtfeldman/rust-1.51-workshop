@@ -2,7 +2,7 @@
 
 Rust also has a boolean value. A `bool` can be either `true` or `false`.
 At runtime, `bool` is the same as `u8`, but at compile time they have different
-types because they're used for different purpsoes.
+types because they're used for different purposes.
 
 > You can convert from `bool` to any of the number types using `as`. 
 > `true` converts to `1` and `false` converts to `0`.
