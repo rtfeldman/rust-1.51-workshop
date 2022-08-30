@@ -30,7 +30,7 @@ fn main() {
               1980, 1985, 1990, 1995, 2000, 2000
             ];
 
-        jazz_releases(all_years)
+        jazz_releases(&all_years)
     }; // dealloc
 
     for year in releases.eighties.iter() {
