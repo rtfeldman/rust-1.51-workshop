@@ -43,3 +43,4 @@ fn average(numbers: Vec<i64>) -> i64 {
 
     sum(numbers) / length
 }
+
